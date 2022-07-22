@@ -10,6 +10,7 @@ const Jumbotron = () => {
         backgroundImage:
           "url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp')",
         height: "400px",
+        width: "100%",
       }}
     >
       <div className="searchBar_Locator justify-content-center">
