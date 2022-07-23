@@ -19,17 +19,17 @@ export const Navbar = () => {
     }
   });
   return (
-    <div class="wrapper">
+    <div className="wrapper">
       <header>
         <nav>
-          <div class="menu-icon">
-            <i class="fa fa-bars fa-2x"></i>
+          <div className="menu-icon">
+            <i className="fa fa-bars fa-2x"></i>
           </div>
-          <img src={logo} class="logo w-25 p-3" />
-          <div class="menu">
-            <div class="button-div">
-              <button class="button-74">Signup</button>
-              <button class="button-84">Log In</button>
+          <img src={logo} className="logo w-25 p-3" />
+          <div className="menu">
+            <div className="button-div">
+              <button className="button-74">Signup</button>
+              <button className="button-84">Log In</button>
             </div>
           </div>
         </nav>
