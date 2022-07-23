@@ -12,9 +12,9 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Jumbotron } from "./component/jumbotron";
 import { SearchBar } from "./component/SearchBar";
-import { Login } from "./component/login";
 import { States } from "./component/states";
 import { Card } from "./component/card";
+import { CityDetails } from "./pages/citydetails";
 
 //create your first component
 const Layout = () => {
@@ -33,7 +33,7 @@ const Layout = () => {
             <Route element={<Demo />} path="/demo" />
             <Route element={<Login />} path="/login" />
             <Route element={<Single />} path="/single/:theid" />
-            <Route element={<Login />} path="/login" />
+            <Route element={<CityDetails />} path="/city" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
