@@ -29,7 +29,9 @@ export const Navbar = () => {
           <div className="menu">
             <div className="button-div">
               <button className="button-74">Signup</button>
-              <button className="button-84">Log In</button>
+              <Link to="/login">
+                <button className="button-84">Log In</button>
+              </Link>
             </div>
           </div>
         </nav>
