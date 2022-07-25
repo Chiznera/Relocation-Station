@@ -1,4 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
+  let BACKEND_URL = process.env.BACKEND_URL;
   return {
     store: {
       token: null,
@@ -78,6 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       login: async (email, password) => {
+        console.log("email: " + email, "password: " + password);
         const opts = {
           method: "POST",
           headers: {
@@ -88,12 +90,11 @@ const getState = ({ getStore, getActions, setStore }) => {
             password: password,
           }),
         };
-
+        // fetch(BACKEND_URL + "/api/login", opts)
+        //   .then((resp) => resp.json())
+        //   .then((data) => console.log(data));
         try {
-          const resp = await fetch(
-            "https://3000-chiznera-relocationstat-pzijzbodj3o.ws-us54.gitpod.io/api/token",
-            opts
-          );
+          const resp = await fetch(BACKEND_URL + "/api/login", opts);
           if (resp.status !== 200) {
             alert("An error has occurred");
             return false;
@@ -105,7 +106,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ token: data.access_token });
           return true;
         } catch (error) {
-          console.error("There has be an error logging in");
+          console.error("There has be an error logging in", error);
         }
       },
     },
