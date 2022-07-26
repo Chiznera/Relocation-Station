@@ -32,6 +32,11 @@ class City(db.Model):
     temperature_range = db.Column(db.String(256), unique=False, nullable=False)
     inclement_weather = db.Column(db.String(256), unique=False, nullable=False)
     avg_cost_of_living = db.Column(db.String(256), unique=False, nullable=False)
+    avg_annual_income = db.Column(db.String(256), unique=False, nullable=False)
+
+class State(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    
 
 class Favorites(db.Model):
     id = db.Column(db.String(256), unique=False, nullable=False)
