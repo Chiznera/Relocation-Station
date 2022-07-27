@@ -1,108 +1,10 @@
-.content {
-  width: 94%;
-  margin: 4em auto;
-  font-size: 20px;
-  line-height: 30px;
-  text-align: justify;
-}
-
 .logo {
   line-height: 60px;
-  position: fixed;
   float: left;
   margin: 16px 46px;
   color: #fff;
-  font-weight: bold;
-  font-size: 20px;
-  letter-spacing: 2px;
 }
 
-nav {
-  position: fixed;
-  width: 100%;
-  line-height: 60px;
-}
-
-nav ul {
-  line-height: 60px;
-  list-style: none;
-  background: rgba(0, 0, 0, 0);
-  overflow: hidden;
-  color: #fff;
-  padding: 0;
-  text-align: right;
-  margin: 0;
-  padding-right: 40px;
-  transition: 1s;
-}
-
-nav.black ul {
-  background: #000;
-}
-
-nav ul li {
-  display: inline-block;
-  padding: 16px 40px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-}
-
-.menu-icon {
-  line-height: 60px;
-  width: 100%;
-  background: #000;
-  text-align: right;
-  box-sizing: border-box;
-  padding: 15px 24px;
-  cursor: pointer;
-  color: #fff;
-  display: none;
-}
-
-@media (max-width: 786px) {
-  .logo {
-    position: fixed;
-    top: 0;
-    margin-top: 16px;
-  }
-
-  nav ul {
-    max-height: 0px;
-    background: #000;
-  }
-
-  nav.black ul {
-    background: #000;
-  }
-
-  .showing {
-    max-height: 34em;
-  }
-
-  nav ul li {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 24px;
-    text-align: center;
-  }
-
-  .menu-icon {
-    display: block;
-  }
-}
-.visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-}
 .searchBar_Locator {
   padding-top: 100px;
 }
@@ -179,4 +81,74 @@ nav ul li a {
   float: right;
   padding-right: 10px;
   padding-top: 20px;
+}
+.app {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: #f8f9fd;
+}
+
+input[type="text"],
+input[type="password"] {
+  height: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  background: #fac002;
+  border: 1px solid #fac002;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+input[type="submit"]:hover {
+  background: #6cf0c2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.list-container {
+  display: flex;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+}
+.cardRow {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  padding-top: 10px;
 }
