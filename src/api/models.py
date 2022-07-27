@@ -8,9 +8,12 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    first_name = db.Column(db.String(256), unique=True, nullable=False)
+    last_name = db.Column(db.String(256), unique=True, nullable=False)
+    email = db.Column(db.String(256), unique=True, nullable=False)
+    password = db.Column(db.String(256), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    favorites = db.Column(db.String(256), unique=True, nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -21,3 +24,19 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class City(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(256), unique=False, nullable=False)
+    population = db.Column(db.Integer, unique=False, nullable=False)
+    temperature_range = db.Column(db.String(256), unique=False, nullable=False)
+    inclement_weather = db.Column(db.String(256), unique=False, nullable=False)
+    avg_cost_of_living = db.Column(db.String(256), unique=False, nullable=False)
+    avg_annual_income = db.Column(db.String(256), unique=False, nullable=False)
+
+class State(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    
+
+class Favorites(db.Model):
+    id = db.Column(db.String(256), unique=False, nullable=False)
