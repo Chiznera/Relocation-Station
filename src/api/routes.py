@@ -5,12 +5,13 @@ import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-import requests
+
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import requests
+
 
 
 #Create flask app
@@ -32,8 +33,6 @@ def forward_resp():
         'https://civilserviceusa.github.io/us-states/data/states.json'
     ).json()
     return jsonify(civilserviceusa = resp, rapidapi = resp2)
-
-
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.
