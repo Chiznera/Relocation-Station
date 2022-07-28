@@ -19,10 +19,22 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       // Use getActions to call a function within a fuction
-      exampleFunction: () => {
-        getActions().changeColor(0, "green");
+      // getStates: () => {
+      //   fetch(
+      //     "https://3001-chiznera-relocationstat-ztly2rvjwxf.ws-us54.gitpod.io/api/statedata"
+      //   )
+      //     .then((resp) => resp.json())
+      //     .then((data) => setStore({ basic: data }));
+      // },
+      getMoreStates: () => {
+        fetch(`${process.env.BACKEND_URL}/api/statedata`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setStore({ basic: data.rapidapi });
+            setStore({ stateInfo: data.civilserviceusa });
+          });
+        console.log("looking for state info", getStore().stateInfo);
       },
-
       syncTokenFromSessionStore: () => {
         const token = sessionStore.getItem("token");
         console.log(
@@ -63,36 +75,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.error("There has be an error logging in", error);
         }
       },
-    },
-
-    getMessage: () => {
-      const store = getStore();
-      const opts = {
-        headers: {
-          Authorization: "Bearer" + store.token,
-        },
-      };
-      // fetching data from the backend
-      fetch(BACKEND_URL + "/api/hello", opts)
-        .then((resp) => resp.json())
-        .then((data) => setStore({ message: data.message }))
-        .catch((error) =>
-          console.log("Error loading message from backend", error)
-        );
-    },
-    changeColor: (index, color) => {
-      //get the store
-      const store = getStore();
-
-      //we have to loop the entire demo array to look for the respective index
-      //and change its color
-      const demo = store.demo.map((elm, i) => {
-        if (i === index) elm.background = color;
-        return elm;
-      });
-
-      //reset the global store
-      setStore({ demo: demo });
     },
   };
 };
