@@ -16,6 +16,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           initial: "white",
         },
       ],
+      basic: [],
+      stateInfo: [],
+      singleState: {},
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -27,14 +30,25 @@ const getState = ({ getStore, getActions, setStore }) => {
       //     .then((data) => setStore({ basic: data }));
       // },
       getMoreStates: () => {
-        fetch(`${process.env.BACKEND_URL}/api/statedata`)
+        fetch(`${process.env.BACKEND_URL}/api/states`)
           .then((resp) => resp.json())
           .then((data) => {
-            setStore({ basic: data.rapidapi });
-            setStore({ stateInfo: data.civilserviceusa });
+            setStore({ stateInfo: data.rapidapi });
+            setStore({ basic: data.civilserviceusa });
           });
         console.log("looking for state info", getStore().stateInfo);
       },
+      getState: (state) => {
+        return fetch(`${process.env.BACKEND_URL}/api/states/${state}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            const store = getStore();
+            console.log(store);
+            setStore({ singleState: data.civilserviceusa });
+            console.log(store);
+          });
+      },
+
       syncTokenFromSessionStore: () => {
         const token = sessionStore.getItem("token");
         console.log(

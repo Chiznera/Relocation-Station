@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card } from "./citycard";
+import Dark from "./darkMode";
 import logo from "./logo.png";
 
 export const Navbar = () => {

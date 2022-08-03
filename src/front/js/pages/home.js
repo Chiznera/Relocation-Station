@@ -9,6 +9,7 @@ export const Home = () => {
 
   return (
     <>
+      <States></States>
       <div className="my-5">
         <h1 className="offset-2">Popular Cities</h1>
 
