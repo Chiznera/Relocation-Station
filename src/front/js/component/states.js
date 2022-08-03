@@ -18,10 +18,10 @@ const States = () => {
           return (
             <div className="col" key={idx}>
               <Card
-                img={basic.state_flag_url}
+                img={basic.state_seal_url}
                 title={basic.state}
                 text={`${basic.state} has a population of ${basic.population}, and the capital is ${basic.capital_city} .`}
-                link={basic.url}
+                link={"/state/:state"}
               />
             </div>
           );

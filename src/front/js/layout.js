@@ -3,9 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
 import { Login } from "./pages/login";
-import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -13,13 +11,11 @@ import { Footer } from "./component/footer";
 import { Jumbotron } from "./component/jumbotron";
 import { SearchBar } from "./component/SearchBar";
 
-import { States } from "./component/states";
-import { Card } from "./component/card";
 import { CityDetails } from "./pages/citydetails";
 import { States } from "./component/states";
 import { Card } from "./component/card";
-import { CityDetails } from "./pages/citydetails";
-
+import Dark from "./component/darkMode";
+import { Singles } from "./component/Singles";
 
 //create your first component
 const Layout = () => {
@@ -31,14 +27,14 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
+          <Dark />
           <Navbar />
           <Jumbotron />
           <Routes>
             <Route element={<Home />} path="/" />
-
             <Route element={<Login />} path="/login" />
             <Route element={<CityDetails />} path="/city" />
-
+            <Route element={<Singles />} path="/state/:state" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

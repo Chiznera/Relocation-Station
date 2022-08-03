@@ -18,7 +18,7 @@ import requests
 api = Blueprint('api', __name__)
 
 
-@api.route('/statedata', methods=['GET'])
+@api.route('/states', methods=['GET'])
 def forward_resp():
     headers = {
 	"X-RapidAPI-Key": "e88c60b623msh923065c118c6201p1f5494jsn1a3edbc8720f",
@@ -32,7 +32,29 @@ def forward_resp():
     resp2 = requests.get(
         'https://civilserviceusa.github.io/us-states/data/states.json'
     ).json()
-    return jsonify(civilserviceusa = resp, rapidapi = resp2)
+    return jsonify(rapidapi = resp, civilserviceusa = resp2)
+
+@api.route('/states/<string:state>', methods=['GET'])
+def get_state(state):
+    # headers = {
+	# "X-RapidAPI-Key": "e88c60b623msh923065c118c6201p1f5494jsn1a3edbc8720f",
+	# "X-RapidAPI-Host": "us-states.p.rapidapi.com"
+    # }
+    # resp = requests.get(
+    #     'https://us-states.p.rapidapi.com/basic',
+    #     headers=headers
+
+    # ).json()    
+    resp = requests.get(
+        'https://civilserviceusa.github.io/us-states/data/states.json'
+    ).json()
+    # rapidapiState = list(filter(lambda x: state.lower() == x["postal"].lower(), resp))
+    civilserviceusaState = list(filter(lambda x: state.lower() == x["code"].lower(), resp))
+    return jsonify(civilserviceusa = civilserviceusaState.pop())
+
+
+
+
 
 # Create a route to authenticate your users and return JWTs. The
 # create_access_token() function is used to actually generate the JWT.

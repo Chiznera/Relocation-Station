@@ -1,23 +1,19 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, ForeignKey, Integer, String, Float
 
 db = SQLAlchemy()
 
 
-#class States(db.Model):
-    # id = db.Model(db.Integer, primary_key=True)
-    # name = db.Column(db.String(120))
-    # population = db.Column(db.String(256))
-    # capital = db.Column(db.String(256))
-
-
 class User(db.Model):
+    __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(256), unique=True, nullable=False)
-    last_name = db.Column(db.String(256), unique=True, nullable=False)
+    first_name = db.Column(db.String(256), nullable=False)
+    last_name = db.Column(db.String(256), nullable=False)
     email = db.Column(db.String(256), unique=True, nullable=False)
-    password = db.Column(db.String(256), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    favorites = db.Column(db.String(256), unique=True, nullable=False)
+    password = db.Column(db.String(256), nullable=False)
+    is_active = db.Column(db.Boolean(), nullable=False)
+    favorites = relationship("Favorites")
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -30,6 +26,7 @@ class User(db.Model):
         }
 
 class City(db.Model):
+    __tablename__ = "city"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), unique=False, nullable=False)
     population = db.Column(db.Integer, unique=False, nullable=False)
@@ -39,8 +36,12 @@ class City(db.Model):
     avg_annual_income = db.Column(db.String(256), unique=False, nullable=False)
 
 class State(db.Model):
+    __tablename__ = "state"
     id = db.Column(db.Integer, primary_key=True)
     
 
 class Favorites(db.Model):
-    id = db.Column(db.String(256), unique=False, nullable=False)
+    __tablename__ = "favorites"
+    id = db.Column(db.String(256), primary_key=True)
+    user_id = Column(db.Integer, ForeignKey("user.id"))
+    state_id = db.Column(db.Integer, ForeignKey("state.id"))
