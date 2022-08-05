@@ -42,6 +42,11 @@ export const Login = () => {
           <button onClick={handleClick}>Login</button>
         </div>
       )}
+      {/* <div className="row justify-content-center">
+        <p>
+          Don&apos;t have an account? <Link to="/signup">Register Here</Link>
+        </p>
+      </div> */}
     </div>
   );
 };
