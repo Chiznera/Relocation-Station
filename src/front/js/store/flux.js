@@ -2,6 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
   let BACKEND_URL = process.env.BACKEND_URL;
   return {
     store: {
+      alert: {
+        type: "",
+        msg: "",
+        show: false,
+      },
       token: null,
       message: null,
       demo: [
@@ -29,6 +34,57 @@ const getState = ({ getStore, getActions, setStore }) => {
       //     .then((resp) => resp.json())
       //     .then((data) => setStore({ basic: data }));
       // },
+      setAlert: (payload) => {
+        /* payload should be an object with the following shape:
+                    {
+                        type: "",
+                        msg: "",
+                        show: false
+                    }
+                    type either: danger, success, warning
+                */
+        setStore({ alert: payload });
+      },
+      resetAlert: () => {
+        setStore({
+          alert: {
+            type: "",
+            msg: "",
+            show: false,
+          },
+        });
+      },
+
+      signup: (data) => {
+        const store = getStore();
+
+        return fetch(`${BACKEND_URL}/api/signup`, {
+          method: "POST",
+
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then((res) => {
+            if (res.status === 409)
+              throw new Error(
+                "The email address already exists. Please login to your account to continue."
+              );
+
+            return res.json();
+          })
+          .then((data) => {
+            console.log("data ", data);
+            getActions().setAlert({
+              type: "success",
+              msg: data.msg,
+              show: true,
+            });
+
+            return true;
+          })
+          .catch((err) => err);
+      },
+
       getMoreStates: () => {
         fetch(`${process.env.BACKEND_URL}/api/states`)
           .then((resp) => resp.json())
