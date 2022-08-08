@@ -22,6 +22,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
+            "bookmarks": [bookmark.serialize() for bookmark in self.bookmarks]
             # do not serialize the password, its a security breach
         }
 
@@ -58,6 +59,17 @@ class State(db.Model):
 class Bookmark(db.Model):
     __tablename__ = "bookmark"
     id = db.Column(db.Integer, primary_key=True)
-    city_name = db.Column(db.Integer, db.ForeignKey("city.id"))
+    # city_name = db.Column(db.Integer, db.ForeignKey("city.id"))
     user_id = db.Column(db.ForeignKey("user.id"))
     user = db.relationship("User", back_populates="bookmarks")
+
+    def __repr__(self):
+        return f'<Bookmark {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            # "user": self.user.serialize()
+        }
+
+    
