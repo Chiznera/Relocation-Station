@@ -58,6 +58,12 @@ def handle_signup():
 
     return jsonify(payload), 200
 
+@api.route('/users', methods=['GET'])
+def get_all_users():
+    users=User.query.all()
+    users_array=[user.serialize() for user in users]
+    return jsonify(users_array), 200
+
 
 @api.route('/states', methods=['GET'])
 def forward_resp():
@@ -103,8 +109,8 @@ def get_state(state):
 def login():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
-    if email != "test" or password != "test":
-        return jsonify({"msg": "Bad email or password"}), 401
+    # if email != "test" or password != "test":
+    #     return jsonify({"msg": "Bad email or password"}), 401
 
     access_token = create_access_token(identity=email)
     return jsonify(access_token=access_token)
