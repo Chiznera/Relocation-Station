@@ -13,7 +13,7 @@ class User(db.Model):
     email = db.Column(db.String(256), unique=True, nullable=False)
     password = db.Column(db.String(256), nullable=False)
     is_active = db.Column(db.Boolean(), nullable=False)
-    favorites = relationship("Favorites")
+    bookmarks = db.relationship("Bookmark", back_populates="user")
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -35,13 +35,29 @@ class City(db.Model):
     avg_cost_of_living = db.Column(db.String(256), unique=False, nullable=False)
     avg_annual_income = db.Column(db.String(256), unique=False, nullable=False)
 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "population": self.population,
+            "temperature_range": self.temperature_range,
+            "inclement_weather": self.inclement_weather,
+            "avg_cost_of_living": self.avg_cost_of_living,
+            "avg_annual_income": self.avg_annual_income,
+            
+
+            
+            # do not serialize the password, its a security breach
+        }
+
 class State(db.Model):
     __tablename__ = "state"
     id = db.Column(db.Integer, primary_key=True)
     
 
-class Favorites(db.Model):
-    __tablename__ = "favorites"
-    id = db.Column(db.String(256), primary_key=True)
-    user_id = Column(db.Integer, ForeignKey("user.id"))
-    state_id = db.Column(db.Integer, ForeignKey("state.id"))
+class Bookmark(db.Model):
+    __tablename__ = "bookmark"
+    id = db.Column(db.Integer, primary_key=True)
+    city_name = db.Column(db.Integer, db.ForeignKey("city.id"))
+    user_id = db.Column(db.ForeignKey("user.id"))
+    user = db.relationship("User", back_populates="bookmarks")
