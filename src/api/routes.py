@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, City
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import create_access_token
@@ -20,37 +20,40 @@ api = Blueprint('api', __name__)
 
 @api.route('/states', methods=['GET'])
 def forward_resp():
-    headers = {
-	"X-RapidAPI-Key": "e88c60b623msh923065c118c6201p1f5494jsn1a3edbc8720f",
-	"X-RapidAPI-Host": "us-states.p.rapidapi.com"
-    }
     resp = requests.get(
-        'https://us-states.p.rapidapi.com/basic',
-        headers=headers
-
-    ).json()    
-    resp2 = requests.get(
         'https://civilserviceusa.github.io/us-states/data/states.json'
     ).json()
-    return jsonify(rapidapi = resp, civilserviceusa = resp2)
+    resp2 = requests.get(
+        'https://3001-chiznera-relocationstat-ztly2rvjwxf.ws-us59.gitpod.io/api/city'
+    ).json()
+    return jsonify(cities = resp2, civilserviceusa = resp)
 
 @api.route('/states/<string:state>', methods=['GET'])
 def get_state(state):
-    # headers = {
-	# "X-RapidAPI-Key": "e88c60b623msh923065c118c6201p1f5494jsn1a3edbc8720f",
-	# "X-RapidAPI-Host": "us-states.p.rapidapi.com"
-    # }
-    # resp = requests.get(
-    #     'https://us-states.p.rapidapi.com/basic',
-    #     headers=headers
-
-    # ).json()    
     resp = requests.get(
         'https://civilserviceusa.github.io/us-states/data/states.json'
     ).json()
-    # rapidapiState = list(filter(lambda x: state.lower() == x["postal"].lower(), resp))
-    civilserviceusaState = list(filter(lambda x: state.lower() == x["code"].lower(), resp))
-    return jsonify(civilserviceusa = civilserviceusaState.pop())
+    resp2 = requests.get(
+        'https://3001-chiznera-relocationstat-ztly2rvjwxf.ws-us59.gitpod.io/api/city'
+    ).json()
+    state_info={}
+    for i in range(len(resp)):
+        if resp[i]["code"] == state:
+            state_info=resp[i]
+    cities=[]
+    for i in range(len(resp2)):
+        if resp2[i]["code"] == state:
+            cities.append(resp2[i])
+    state_info["cities"]=cities
+    return jsonify(state_info),200
+
+@api.route("/city", methods=['GET'])
+def getCities():
+    city = City.query.all()
+    serialized_city = [item.serialize() for item in city]
+    return jsonify(serialized_city), 200
+
+
 
 
 
