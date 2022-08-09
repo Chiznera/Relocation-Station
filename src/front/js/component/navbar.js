@@ -11,7 +11,9 @@ export const Navbar = () => {
       </Link>
       <div class="menu">
         <div class="button-div">
-          <button class="button-74">Signup</button>
+          <Link to={"/signup"}>
+            <button class="button-74">Signup</button>
+          </Link>
           <Link to={"/login"}>
             <button class="button-84">Log In</button>
           </Link>
