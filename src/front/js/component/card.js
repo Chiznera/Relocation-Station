@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //import IconButton from "@mui/material/IconButton";
 //import FavoriteTwoToneIcon from "@mui/icons-material/FavoriteTwoTone";
 
-const Card = ({ img, title, text, link, link_text }) => {
+const Card = ({ img, title, text, link, link_text, url, url2 }) => {
   return (
     <div
       className="card mb-3 text-light bg-dark mx-2"
@@ -16,11 +17,19 @@ const Card = ({ img, title, text, link, link_text }) => {
         <h5 className="card-title">{title ? title : "Filter titles"}</h5>
         <div class="card-buttons">
           <p className="card-text">{text ? text : "This is filler"}</p>
-          <a href={link ? link : "#"} className="btn btn-primary">
-            {link_text ? link_text : "Find out more"}
-          </a>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-facebook"></i>
+          <div className="cardButtons">
+            <a href={link ? link : "#"} className="btn btn-primary">
+              {link_text ? link_text : "Find out more"}
+            </a>
+            <div className="socialButtons">
+              <a href={url ? url : "#"} className="btn btn-light">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href={url2 ? url2 : "#"} className="btn btn-light">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

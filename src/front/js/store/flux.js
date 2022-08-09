@@ -23,17 +23,14 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       basic: [],
       stateInfo: [],
-      singleState: {},
+      singleState: {
+        cities: [],
+      },
+      city: [],
+      stateCities: {},
     },
     actions: {
-      // Use getActions to call a function within a fuction
-      // getStates: () => {
-      //   fetch(
-      //     "https://3001-chiznera-relocationstat-ztly2rvjwxf.ws-us54.gitpod.io/api/statedata"
-      //   )
-      //     .then((resp) => resp.json())
-      //     .then((data) => setStore({ basic: data }));
-      // },
+
       setAlert: (payload) => {
         /* payload should be an object with the following shape:
                     {
@@ -85,24 +82,30 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((err) => err);
       },
 
+
       getMoreStates: () => {
         fetch(`${process.env.BACKEND_URL}/api/states`)
           .then((resp) => resp.json())
           .then((data) => {
-            setStore({ stateInfo: data.rapidapi });
             setStore({ basic: data.civilserviceusa });
+            setStore({ city: data.cities });
           });
-        console.log("looking for state info", getStore().stateInfo);
       },
-      getState: (state) => {
-        return fetch(`${process.env.BACKEND_URL}/api/states/${state}`)
-          .then((resp) => resp.json())
-          .then((data) => {
-            const store = getStore();
-            console.log(store);
-            setStore({ singleState: data.civilserviceusa });
-            console.log(store);
-          });
+      getState: async (state) => {
+        const resp = await fetch(
+          `${process.env.BACKEND_URL}/api/states/${state}`
+        );
+        const store = getStore();
+        try {
+          const data = await resp.json();
+          console.log(data);
+          setStore({ singleState: data });
+          // store.singleState = data.state_info;
+          // setStore(store);
+          console.log(store);
+        } catch (error) {
+          console.log(error);
+        }
       },
 
       syncTokenFromSessionStore: () => {

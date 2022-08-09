@@ -17,6 +17,8 @@ import { States } from "./component/states";
 import { Card } from "./component/card";
 import Dark from "./component/darkMode";
 import { Singles } from "./component/Singles";
+import { CityCard } from "./component/cityCard";
+import { UserPage } from "./pages/UserPage";
 
 //create your first component
 const Layout = () => {
@@ -28,13 +30,14 @@ const Layout = () => {
     <div>
       <BrowserRouter basename={basename}>
         <ScrollToTop>
-          <Dark />
           <Navbar />
           <Jumbotron />
+          <Dark />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
             <Route element={<CityDetails />} path="/city" />
+            <Route element={<CityDetails />} path="/:user" />
             <Route element={<Singles />} path="/state/:state" />
             <Route element={<Signup />} path="/signup" />
             <Route element={<h1>Not found!</h1>} />

@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
 import { Card } from "../component/card";
+import { cityCard } from "./cityCard";
 
 const States = () => {
   const { store, actions } = useContext(Context);
@@ -22,6 +23,8 @@ const States = () => {
                 title={basic.state}
                 text={`${basic.state} has a population of ${basic.population}, and the capital is ${basic.capital_city} .`}
                 link={"/state/:state"}
+                url={basic.twitter_url}
+                url2={basic.facebook_url}
               />
             </div>
           );

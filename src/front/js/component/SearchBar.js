@@ -1,7 +1,7 @@
 import React from "react";
 
 const SearchBar = () => (
-  <form action="/" method="get">
+  <form action="/state/" method="get">
     <label htmlFor="header-search">
       <span className="visually-hidden">Search blog posts</span>
     </label>

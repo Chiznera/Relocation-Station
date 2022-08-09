@@ -30,6 +30,7 @@ class City(db.Model):
     __tablename__ = "city"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), unique=False, nullable=False)
+    code = db.Column(db.String(256), unique=False, nullable=False)
     population = db.Column(db.Integer, unique=False, nullable=False)
     temperature_range = db.Column(db.String(256), unique=False, nullable=False)
     inclement_weather = db.Column(db.String(256), unique=False, nullable=False)
@@ -38,19 +39,18 @@ class City(db.Model):
 
     def serialize(self):
         return {
-            "id": self.id,
-            "name": self.name,
-            "population": self.population,
-            "temperature_range": self.temperature_range,
-            "inclement_weather": self.inclement_weather,
-            "avg_cost_of_living": self.avg_cost_of_living,
-            "avg_annual_income": self.avg_annual_income,
-            
 
-            
-            # do not serialize the password, its a security breach
+        "id": self.id,
+        "name": self.name,
+        "code": self.code,
+        "population": self.population,
+        "temperature_range": self.temperature_range,
+        "inclement_weather": self.inclement_weather,
+        "avg_cost_of_living": self.avg_cost_of_living,
+        "avg_annual_income": self.avg_annual_income,
         }
 
+    
 class State(db.Model):
     __tablename__ = "state"
     id = db.Column(db.Integer, primary_key=True)
