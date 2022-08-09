@@ -165,3 +165,25 @@ input[type="submit"]:hover {
 .fab {
   background: white;
 }
+.searchInputs {
+  margin-top: 105px;
+  display: flex;
+}
+.search input {
+  background-color: #fac002;
+  border: 0;
+  border-radius: 2px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  font-size: 18px;
+  padding: 15px;
+  height: 30px;
+  width: 30px;
+}
+.searchIcon {
+  height: 25px;
+  width: 30px;
+  background-color: white;
+  display: grid;
+  place-items: center;
+}

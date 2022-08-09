@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { SearchBar } from "./SearchBar";
 import travel from "./travel.png";
 
+
 const Jumbotron = () => {
+  const { store, actions } = useContext(Context);
+  useEffect(() => {
+    actions.getMoreStates();
+    console.log(store);
+  }, []);
+
   return (
     <div
       className="p-5 text-center bg-image rounded-3"
@@ -14,7 +22,7 @@ const Jumbotron = () => {
       }}
     >
       <div className="searchBar_Locator justify-content-center">
-        <SearchBar />
+        <SearchBar placeholder="Enter State Name..." data={store.basic} />
       </div>
       <div
         className="mask"
