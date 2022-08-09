@@ -14,6 +14,7 @@ import requests
 
 
 
+
 #Create flask app
 api = Blueprint('api', __name__)
 
@@ -70,19 +71,21 @@ def forward_resp():
     resp = requests.get(
         'https://civilserviceusa.github.io/us-states/data/states.json'
     ).json()
-    resp2 = requests.get(
-        'https://3001-chiznera-relocationstat-ztly2rvjwxf.ws-us59.gitpod.io/api/city'
-    ).json()
-    return jsonify(cities = resp2, civilserviceusa = resp)
+
+    citySet = City.query.all()
+    serialized_cities = [item.serialize() for item in citySet]
+    
+    return jsonify(cities = serialized_cities, civilserviceusa = resp)
 
 @api.route('/states/<string:state>', methods=['GET'])
 def get_state(state):
     resp = requests.get(
         'https://civilserviceusa.github.io/us-states/data/states.json'
     ).json()
-    resp2 = requests.get(
-        'https://3001-chiznera-relocationstat-ztly2rvjwxf.ws-us59.gitpod.io/api/city'
-    ).json()
+    
+    citySet = City.query.all()
+    resp2 = [item.serialize() for item in citySet]
+
     state_info={}
     for i in range(len(resp)):
         if resp[i]["code"] == state:

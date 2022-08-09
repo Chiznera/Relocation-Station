@@ -30,7 +30,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       stateCities: {},
     },
     actions: {
-
       setAlert: (payload) => {
         /* payload should be an object with the following shape:
                     {
@@ -81,7 +80,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           })
           .catch((err) => err);
       },
-
 
       getMoreStates: () => {
         fetch(`${process.env.BACKEND_URL}/api/states`)
