@@ -2,8 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-import { Card } from "../component/card";
-import { cityCard } from "./cityCard";
+import { HomeTile } from "./homeTile";
 
 const States = () => {
   const { store, actions } = useContext(Context);
@@ -13,23 +12,18 @@ const States = () => {
   }, []);
 
   return (
-    <div className="container text-light">
-      <div className="cardRow">
-        {store.basic.map((basic, idx) => {
-          return (
-            <div className="col" key={idx}>
-              <Card
-                img={basic.state_seal_url}
-                title={basic.state}
-                text={`${basic.state} has a population of ${basic.population}, and the capital is ${basic.capital_city} .`}
-                link={"/state/:state"}
-                url={basic.twitter_url}
-                url2={basic.facebook_url}
-              />
-            </div>
-          );
-        })}
-      </div>
+    <div className="row row-cols-5 text-light mx-5">
+      {store.basic.map((basic, idx) => {
+        return (
+          <div className="col" key={idx}>
+            <HomeTile
+              img={basic.landscape_background_url}
+              text={basic.state}
+              link={basic.code}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

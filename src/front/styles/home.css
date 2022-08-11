@@ -187,3 +187,22 @@ input[type="submit"]:hover {
   display: grid;
   place-items: center;
 }
+
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.tile {
+  position: relative;
+  text-align: center;
+  color: white;
+  filter: brightness(70%);
+}
+
+.tile:hover {
+  filter: brightness(100%);
+}
