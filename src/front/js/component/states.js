@@ -22,7 +22,7 @@ const States = () => {
                 img={basic.state_seal_url}
                 title={basic.state}
                 text={`${basic.state} has a population of ${basic.population}, and the capital is ${basic.capital_city} .`}
-                link={"/state/:state"}
+                link={`/state/${basic.code}`}
                 url={basic.twitter_url}
                 url2={basic.facebook_url}
               />

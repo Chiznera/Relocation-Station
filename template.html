@@ -16,8 +16,57 @@
       integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
       crossorigin="anonymous"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <style>
+      body {
+        padding: 10% 3% 10% 3%;
+        text-align: center;
+      }
+      img {
+        height: 140px;
+        width: 140px;
+      }
+      h1 {
+        color: rgb(13, 20, 227);
+      }
+      .mode {
+        float: right;
+        margin-top: 0.5pc;
+      }
+      .change {
+        cursor: pointer;
+        border: 1px solid #555;
+        border-radius: 40%;
+        width: 20px;
+        text-align: center;
+        padding: 5px;
+        margin-left: 8px;
+      }
+      .dark {
+        background-color: #222;
+        color: #e6e6e6;
+      }
+    </style>
   </head>
   <body class="h-100">
+    <div class="mode">
+      Dark mode:
+      <span class="change">OFF</span>
+    </div>
+
+    <script>
+      $(".change").on("click", function () {
+        if ($("body").hasClass("dark")) {
+          $("body").removeClass("dark");
+          $(".change").text("OFF");
+        } else {
+          $("body").addClass("dark");
+          $(".change").text("ON");
+        }
+      });
+    </script>
+
     <div id="app" class="h-100"></div>
 
     <script

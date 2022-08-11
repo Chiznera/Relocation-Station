@@ -6,10 +6,10 @@ import { Card } from "../component/card";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-
+  console.log(store.city);
   return (
     <>
-      <States></States>
+      <States />
       <div className="my-5">
         <h1 className="offset-2">Popular Cities</h1>
 
