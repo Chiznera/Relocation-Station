@@ -36,7 +36,7 @@ const Singles = (idx) => {
               text1={`Population: ${city.population}`}
               text2={`Adverage Housing Cost: ${city.avg_cost_of_living}`}
               text3={`Adverage Income: ${city.avg_annual_income}`}
-              text4={`Inclement Weaher: ${city.inclement_weather}`}
+              text4={`Inclement Weather: ${city.inclement_weather}`}
               text5={`Tempeture Anually this time of year ${city.temperature_range}`}
             />
           );
