@@ -15,7 +15,6 @@ import { SearchBar } from "./component/SearchBar";
 import { CityDetails } from "./pages/citydetails";
 import { States } from "./component/states";
 import { Card } from "./component/card";
-import Dark from "./component/darkMode";
 import { Singles } from "./component/Singles";
 import { CityCard } from "./component/cityCard";
 import { UserPage } from "./pages/UserPage";
@@ -32,7 +31,6 @@ const Layout = () => {
         <ScrollToTop>
           <Navbar />
           <Jumbotron />
-          <Dark />
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />

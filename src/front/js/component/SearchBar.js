@@ -1,30 +1,68 @@
 import { Store } from "@material-ui/icons";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-const SearchBar = ({ placeholder, data }) => {
+const SearchBar = ({ placeholder, basic }) => {
   const { store, actions } = useContext(Context);
+  const [filteredData, setFilteredData] = useState([]);
+  const [wordEntered, setWordEntered] = useState("");
+
   useEffect(() => {
     actions.getMoreStates();
-    console.log(store);
   }, []);
+  const handleFilter = (event) => {
+    const searchWord = event.target.value;
+    event.persist();
+    setWordEntered(searchWord);
+    const newFilter = store.basic.filter((basic) => {
+      return basic.state.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
+  const clearInput = () => {
+    setFilteredData([]);
+    setWordEntered("");
+  };
+
   return (
     <div className="Search">
       <div className="searchInputs">
-        <input type="text" placeholder={placeholder} />
+        <input
+          type="text"
+          placeholder={placeholder}
+          value={wordEntered}
+          onChange={handleFilter}
+        />
         <div className="searchIcon">
-          <i class="fas fa-search"></i>
+          {filteredData.length != 0 ? (
+            <i class="fas fa-times" onClick={clearInput}></i>
+          ) : (
+            <i className="fas fa-search"></i>
+          )}
         </div>
       </div>
-      <div className="dataResult">
-        {store.basic.map((basic, idx) => {
-          return (
-            <a className="dataInfo">
-              <p> {basic.state} </p>
-            </a>
-          );
-        })}
-      </div>
+      {filteredData.length != 0 && (
+        <div className="dataResult">
+          {filteredData.map((basic, idx) => {
+            return (
+              <a
+                className="dataItem"
+                href={`/state/${basic.code}`}
+                target="_blank"
+              >
+                <p> {basic.state} </p>
+              </a>
+            );
+          })}
+        </div>
+      )}
+      ;
     </div>
   );
 };
