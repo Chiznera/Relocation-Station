@@ -6,7 +6,7 @@ import { Card } from "../component/card";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-  console.log(store.city);
+
   return (
     <>
       <States />
