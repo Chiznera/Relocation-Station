@@ -9,9 +9,7 @@ export const Home = () => {
   console.log(store.city);
   return (
     <>
-
       <States />
-
     </>
   );
 };
