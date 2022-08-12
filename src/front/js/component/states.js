@@ -12,6 +12,7 @@ const States = () => {
   }, []);
 
   return (
+
     <div className="row row-cols-5 text-light mx-5">
       {store.basic.map((basic, idx) => {
         return (
@@ -24,6 +25,7 @@ const States = () => {
           </div>
         );
       })}
+
     </div>
   );
 };

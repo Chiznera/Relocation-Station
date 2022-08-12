@@ -106,6 +106,18 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      getCities: async () => {
+        const resp = await fetch(`${process.env.BACKEND_URL}/api/city`);
+
+        try {
+          const data = await resp.json();
+          console.log(data);
+          setStore({ city: data });
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
       syncTokenFromSessionStore: () => {
         const token = sessionStore.getItem("token");
         console.log(

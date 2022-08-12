@@ -147,8 +147,6 @@ input[type="submit"]:hover {
 }
 
 .input-container {
-  display: flex;
-  flex-direction: column;
   gap: 8px;
   margin: 10px;
 }
@@ -165,12 +163,15 @@ input[type="submit"]:hover {
 .fab {
   background: white;
 }
+
 .searchInputs {
-  margin-top: 105px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
   display: flex;
 }
-.search input {
-  background-color: #fac002;
+.Search input {
+  background-color: white;
   border: 0;
   border-radius: 2px;
   border-top-right-radius: 0px;
@@ -178,15 +179,36 @@ input[type="submit"]:hover {
   font-size: 18px;
   padding: 15px;
   height: 30px;
-  width: 30px;
+  width: 300px;
 }
 .searchIcon {
-  height: 25px;
+  height: 30px;
   width: 30px;
   background-color: white;
   display: grid;
   place-items: center;
+  
 }
+.dataResult {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: black;
+  overflow: hidden;
+  overflow-y: auto;
+  margin-left: 508px;
+}
+.dataResult::-webkit-scrollbar {
+  display: none;
+}
+.dataResult .dataItem {
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
 
 .centered {
   position: absolute;
@@ -206,3 +228,11 @@ input[type="submit"]:hover {
 .tile:hover {
   filter: brightness(100%);
 }
+
+.dataItem p {
+  margin-left: 10px;
+}
+.fas fa-times {
+  cursor: pointer;
+}
+

@@ -30,7 +30,7 @@ class City(db.Model):
     __tablename__ = "city"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), unique=False, nullable=False)
-    code = db.Column(db.String(256), unique=False, nullable=False)
+    code = db.Column(db.String(256), unique=False, nullable=True)
     population = db.Column(db.Integer, unique=False, nullable=False)
     temperature_range = db.Column(db.String(256), unique=False, nullable=False)
     inclement_weather = db.Column(db.String(256), unique=False, nullable=False)
