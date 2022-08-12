@@ -9,7 +9,11 @@ export const Home = () => {
 
   return (
     <>
-      <States></States>
+
+
+      <States />
+
+
     </>
   );
 };
