@@ -15,7 +15,7 @@ const Card = ({ img, title, text, link, link_text, url, url2 }) => {
       />
       <div className="card-body">
         <h5 className="card-title">{title ? title : "Filter titles"}</h5>
-        <div class="card-buttons">
+        <div className="card-buttons">
           <p className="card-text">{text ? text : "This is filler"}</p>
           <div className="cardButtons">
             <a href={link ? link : "#"} className="btn btn-primary">
@@ -23,10 +23,10 @@ const Card = ({ img, title, text, link, link_text, url, url2 }) => {
             </a>
             <div className="socialButtons">
               <a href={url ? url : "#"} className="btn btn-light">
-                <i class="fab fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </a>
               <a href={url2 ? url2 : "#"} className="btn btn-light">
-                <i class="fab fa-facebook"></i>
+                <i className="fab fa-facebook"></i>
               </a>
             </div>
           </div>
