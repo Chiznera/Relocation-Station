@@ -9,11 +9,7 @@ export const Home = () => {
 
   return (
     <>
-
-
       <States />
-
-
     </>
   );
 };
