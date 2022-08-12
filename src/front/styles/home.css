@@ -208,9 +208,31 @@ input[type="submit"]:hover {
   align-items: center;
   color: black;
 }
+
+
+.centered {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.tile {
+  position: relative;
+  text-align: center;
+  color: white;
+  filter: brightness(70%);
+}
+
+.tile:hover {
+  filter: brightness(100%);
+}
+
 .dataItem p {
   margin-left: 10px;
 }
 .fas fa-times {
   cursor: pointer;
 }
+
