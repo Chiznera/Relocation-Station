@@ -7,7 +7,7 @@ const CityCard = ({ name, text1, text2, text3, text4, text5 }) => {
   return (
     <div className="row">
       <div className="col-sm-6">
-        <div className="card">
+        <div className="card text-light bg-dark">
           <div className="card-body">
             <h5 className="card-title">
               <strong>{name ? name : "Filter titles"}</strong>

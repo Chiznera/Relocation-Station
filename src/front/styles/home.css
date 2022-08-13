@@ -164,6 +164,11 @@ input[type="submit"]:hover {
   background: white;
 }
 
+.search {
+  display: flex;
+  flex-direction: column;
+}
+
 .searchInputs {
   justify-content: center;
   align-items: center;
@@ -187,16 +192,14 @@ input[type="submit"]:hover {
   background-color: white;
   display: grid;
   place-items: center;
-  
 }
 .dataResult {
-  width: 300px;
+  width: 330px;
   height: 200px;
   background-color: #fff;
   box-shadow: black;
   overflow: hidden;
   overflow-y: auto;
-  margin-left: 508px;
 }
 .dataResult::-webkit-scrollbar {
   display: none;
@@ -209,13 +212,11 @@ input[type="submit"]:hover {
   color: black;
 }
 
-
 .centered {
   position: absolute;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 .tile {
@@ -236,31 +237,6 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-.dataResult {
-  width: 300px;
-  height: 200px;
-  background-color: #fff;
-  box-shadow: black;
-  overflow: hidden;
-  overflow-y: auto;
-  margin-left: 508px;
-}
-.dataResult::-webkit-scrollbar {
-  display: none;
-}
-.dataResult .dataItem {
-  width: 200px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  color: black;
-}
-.dataItem p {
-  margin-left: 10px;
-}
-.fas fa-times {
-  cursor: pointer;
-}
 .centered {
   position: absolute;
   top: 20%;
@@ -278,4 +254,3 @@ input[type="submit"]:hover {
 .tile:hover {
   filter: brightness(100%);
 }
-
