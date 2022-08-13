@@ -48,7 +48,7 @@ const SearchBar = ({ placeholder, basic }) => {
         </div>
       </div>
       {filteredData.length != 0 && (
-        <div className="dataResult">
+        <div className="dataResult mx-auto">
           {filteredData.map((basic, idx) => {
             return (
               <a
