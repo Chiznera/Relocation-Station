@@ -15,7 +15,7 @@ import { SearchBar } from "./component/SearchBar";
 import { CityDetails } from "./pages/citydetails";
 import { States } from "./component/states";
 import { Card } from "./component/card";
-import { Singles } from "./component/Singles";
+import { Singles } from "./pages/Singles";
 import { CityCard } from "./component/cityCard";
 import { UserPage } from "./pages/UserPage";
 
@@ -34,8 +34,6 @@ const Layout = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Login />} path="/login" />
-            <Route element={<CityDetails />} path="/city" />
-            <Route element={<CityDetails />} path="/:user" />
             <Route element={<Singles />} path="/state/:state" />
             <Route element={<Signup />} path="/signup" />
             <Route element={<h1>Not found!</h1>} />

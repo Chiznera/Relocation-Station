@@ -40,13 +40,19 @@ const CityDetails = (props) => {
           Nulla condimentum nisi sapien, quis scelerisque ante dapibus nec.
           Fusce sed sagittis neque. Aenean cursus commodo leo, viverra malesuada
           diam pharetra eu. In vehicula elit sed ex molestie volutpat.
-        </div>
+        </div> */}
       </div>
-      <div className="d-flex">
-        <DetailComponent title={props.state} />
+      <div className="d-flex justify-content-evenly">
         <DetailComponent title={props.text1} />
         <DetailComponent title={props.text2} />
         <DetailComponent title={props.text3} />
+      </div>
+      <div className="imgSize pt-2">
+        <img
+          src={props.img ? props.img : "https://via.placeholder.com/600/400"}
+          className="stateImg"
+          alt="..."
+        />
       </div>
     </div>
   );

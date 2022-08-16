@@ -17,7 +17,7 @@ const Jumbotron = () => {
       style={{
         backgroundImage:
           "url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp')",
-        height: "400px",
+        height: "250px",
         width: "100%",
       }}
     >
