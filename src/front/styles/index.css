@@ -10,3 +10,39 @@
   --text-secondary: grey;
   --accent: darkred;
 }
+body {
+  /* padding: 10% 3% 10% 3%; */
+  text-align: center;
+}
+/* img {
+  height: 140px;
+  width: 140px;
+} */
+h1 {
+  color: rgb(13, 20, 227);
+}
+.mode {
+  float: right;
+  margin-top: 0.5pc;
+}
+.change {
+  cursor: pointer;
+  border: 1px solid #555;
+  border-radius: 40%;
+  width: 20px;
+  text-align: center;
+  padding: 5px;
+  margin-left: 8px;
+}
+.dark {
+  background-color: #222;
+  color: #e6e6e6;
+}
+.stateImg {
+  padding: 0.25rem;
+  /* background-color: #ffc107;
+  border: 1px solid #ffc107;
+  border-radius: 0.25rem; */
+  max-width: 100%;
+  height: auto;
+}

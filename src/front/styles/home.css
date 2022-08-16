@@ -224,10 +224,16 @@ input[type="submit"]:hover {
   text-align: center;
   color: white;
   filter: brightness(70%);
+  border-radius: 50%;
 }
 
 .tile:hover {
   filter: brightness(100%);
+}
+
+.tileImg {
+  border-radius: 10%;
+  width: 100%;
 }
 
 .dataItem p {
@@ -235,22 +241,4 @@ input[type="submit"]:hover {
 }
 .fas fa-times {
   cursor: pointer;
-}
-
-.centered {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.tile {
-  position: relative;
-  text-align: center;
-  color: white;
-  filter: brightness(70%);
-}
-
-.tile:hover {
-  filter: brightness(100%);
 }
