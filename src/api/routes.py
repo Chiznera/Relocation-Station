@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, City
+from api.models import db, User, City, Bookmark
 from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import create_access_token
@@ -124,15 +124,14 @@ def login():
    
    
    
-@api.route("/hello", methods=["GET"])
+@api.route("/favorites", methods=["POST"])
 @jwt_required()
-def get_hello():
-
-    dictionary  = {
-        "message": "Hello World"
-    }
-    
-    return jsonify(dictionary)
-
-
-    return jsonify(response_body), 200
+def addFavorites():
+    # user = User.query.filter_by(email=get_jwt_identity()).first()
+    # print(user)
+    body = request.get_json()
+    print(body)
+    favorite=Bookmark(user_id=1, state_name=body["state_name"])
+    db.session.add(favorite)
+    db.session.commit()
+    return jsonify(favorite.serialize())
