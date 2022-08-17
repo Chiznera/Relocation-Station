@@ -22,10 +22,11 @@ const Singles = (idx) => {
       <CityDetails
         key={idx}
         img={store.singleState?.skyline_background_url}
-        state={store.singleState?.state}
+        // state={store.singleState?.state}
         text1={`Population: ${store.singleState?.population}`}
         text2={`Capital City: ${store.singleState?.capital_city}`}
         text3={`Nickname: ${store.singleState?.nickname}`}
+        obj={store.singleState}
       />
       <div className="cityCards">
         {store.singleState?.cities?.map((city, idx) => {

@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   let BACKEND_URL = process.env.BACKEND_URL;
   return {
     store: {
+      favorites: [],
       alert: {
         type: "",
         msg: "",
@@ -30,6 +31,21 @@ const getState = ({ getStore, getActions, setStore }) => {
       stateCities: {},
     },
     actions: {
+      addFavorites: (data) => {
+        const store = getStore();
+        store.favorites.push(data);
+        setStore(store);
+      },
+
+      deleteFavorites: (index) => {
+        const store = getStore();
+        const newArray = store.favorites.filter((item, i) => i != index);
+        setStore({
+          favorites: newArray,
+        });
+      },
+
+
       setAlert: (payload) => {
         /* payload should be an object with the following shape:
                     {

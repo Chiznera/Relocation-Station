@@ -57,18 +57,19 @@ class State(db.Model):
     
 
 class Bookmark(db.Model):
-    __tablename__ = "bookmark"
+    __tablename__ = "bookmarks"
     id = db.Column(db.Integer, primary_key=True)
-    # city_name = db.Column(db.Integer, db.ForeignKey("city.id"))
+    state_name = db.Column(db.String(256), nullable=False)
     user_id = db.Column(db.ForeignKey("user.id"))
     user = db.relationship("User", back_populates="bookmarks")
 
     def __repr__(self):
-        return f'<Bookmark {self.id}>'
+        return f'<Bookmarks {self.id}>'
 
     def serialize(self):
         return {
             "id": self.id,
+            "state_name": self.state_name,
             # "user": self.user.serialize()
         }
 
