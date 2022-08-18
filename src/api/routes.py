@@ -11,7 +11,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 import requests
-
+import datetime
 
 
 
@@ -117,8 +117,11 @@ def login():
     password = request.json.get("password", None)
     # if email != "test" or password != "test":
     #     return jsonify({"msg": "Bad email or password"}), 401
+    user = User.query.filter_by(email=email, password=password).first()
+    if not user :
+        return jsonify({"msg": "Bad email or password"}), 401
 
-    access_token = create_access_token(identity=email)
+    access_token = create_access_token(identity=user.id, expires_delta=datetime.timedelta(minutes=60))    
     return jsonify(access_token=access_token)
 
    
@@ -127,11 +130,13 @@ def login():
 @api.route("/favorites", methods=["POST"])
 @jwt_required()
 def addFavorites():
-    # user = User.query.filter_by(email=get_jwt_identity()).first()
-    # print(user)
+    user = User.query.filter_by(id=get_jwt_identity()).first()
+    print(user)
     body = request.get_json()
     print(body)
-    favorite=Bookmark(user_id=1, state_name=body["state_name"])
+    favorite=Bookmark(user_id=user.id, state_name=body["state"])
     db.session.add(favorite)
     db.session.commit()
-    return jsonify(favorite.serialize())
+    favorites=Bookmark.query.filter_by(user_id=user.id)
+    favorite_list=[favorite.serialize()for favorite in favorites]
+    return jsonify(favorite_list)

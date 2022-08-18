@@ -13,7 +13,7 @@ const Singles = (idx) => {
   useEffect(() => {
     console.log(store.singleState);
   }, [store.singleState]);
-
+  console.log(store.favorites)
   return (
     <div className="jumbotron">
       <h1 className="display-4"></h1>
