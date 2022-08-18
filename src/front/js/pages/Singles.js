@@ -40,9 +40,11 @@ const Singles = (idx) => {
               <CityCard
                 key={idx}
                 name={city.name}
-                text1={`Population: ${city.population?.toLocaleString()}`}
+                text1={`Population: ${parseInt(
+                  city.population
+                )?.toLocaleString()}`}
                 text2={`Average Cost of Living: ${city.avg_cost_of_living}% of National Average`}
-                text3={`Average Income: ${city.avg_annual_income}`}
+                text3={`Average Income: $${city.avg_annual_income}`}
                 text4={`Inclement Weather: ${city.inclement_weather}`}
                 text5={`Typical Annual Temperature Range: ${city.temperature_range}`}
                 // text6={`Walk Score: `}
