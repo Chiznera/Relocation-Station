@@ -32,9 +32,25 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       addFavorites: (data) => {
-        const store = getStore();
-        store.favorites.push(data);
-        setStore(store);
+        let token = sessionStorage.getItem("token")
+        console.log(token)
+        fetch(`${process.env.BACKEND_URL}/api/favorites`, {
+          method: "POST",
+
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(data),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            setStore({
+              favorites: data,
+            });
+          });        // const store = getStore();
+        // store.favorites.push(data);
+        // setStore(store);
       },
 
       deleteFavorites: (index) => {
@@ -70,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       signup: (data) => {
         const store = getStore();
 
-        return fetch(`${BACKEND_URL}/api/signup`, {
+        fetch(`${process.env.BACKEND_URL}/api/signup`, {
           method: "POST",
 
           headers: { "Content-type": "application/json" },
