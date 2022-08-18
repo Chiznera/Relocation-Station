@@ -17,8 +17,10 @@ const Singles = (idx) => {
   const bgStyle = {
     backgroundImage: `url('${store.singleState?.skyline_background_url}')`,
   };
+  console.log(store.singleState)
 
   return (
+
     // <div className="jumbotron border border-5 border-warning">
     //   <h1 className="display-4"></h1>
     //   <p className="lead"></p>
@@ -36,6 +38,7 @@ const Singles = (idx) => {
         />
         <div className="container my-4 d-flex bg-dark">
           {store.singleState?.cities?.map((city, idx) => {
+
             return (
               <CityCard
                 key={idx}
@@ -47,9 +50,9 @@ const Singles = (idx) => {
                 text3={`Average Income: $${city.avg_annual_income}`}
                 text4={`Inclement Weather: ${city.inclement_weather}`}
                 text5={`Typical Annual Temperature Range: ${city.temperature_range}`}
-                // text6={`Walk Score: `}
-                // text7={`Transit Score: `}
-                // text8={`Bike Score: `}
+                text6={`Walk Score:  ${city.walk_score}`}
+                text7={`Transit Score:  ${city.transit_score}`}
+                text8={`Bike Score:  ${city.bike_score}`}
               />
             );
           })}
