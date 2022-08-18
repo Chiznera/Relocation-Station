@@ -7,7 +7,7 @@ const HomeTile = ({ img, text, link }) => {
       <div className="tile">
         <img
           src={img ? img : "https://via.placeholder.com/468"}
-          className="card-img-top"
+          className="tileImg"
         />
         <div className="centered">{text ? text : "Place Holder"}</div>
       </div>

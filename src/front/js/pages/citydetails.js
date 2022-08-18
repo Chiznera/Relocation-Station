@@ -9,18 +9,11 @@ const CityDetails = (props) => {
 
   return (
     <div className="container text-light bg-dark">
-      <div className="imgSize pt-2">
-        <img
-          src={props.img ? props.img : "https://via.placeholder.com/600/400"}
-          className="img-thumbnail "
-          alt="..."
-        />
-      </div>
       <div className="card-header">
-        <h1 className="card-title">
+        <h1 className="card-title text-warning">
           {props.state ? props.state : "This is filler"}
         </h1>
-        <div className="card-body">
+        {/* <div className="card-body">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
           sagittis leo, nec rhoncus nulla. Etiam quis ligula sit amet libero
           aliquam bibendum. Sed ut orci aliquam, blandit ante a, egestas eros.
@@ -30,14 +23,20 @@ const CityDetails = (props) => {
           Nulla condimentum nisi sapien, quis scelerisque ante dapibus nec.
           Fusce sed sagittis neque. Aenean cursus commodo leo, viverra malesuada
           diam pharetra eu. In vehicula elit sed ex molestie volutpat.
-        </div>
+        </div> */}
       </div>
-      <div className="d-flex">
-        <DetailComponent title={props.state} />
+      <div className="d-flex justify-content-evenly">
         <DetailComponent title={props.text1} />
         <DetailComponent title={props.text2} />
         <DetailComponent title={props.text3} />
       </div>
+      {/* <div className="imgSize pt-2">
+        <img
+          src={props.img ? props.img : "https://via.placeholder.com/600/400"}
+          className="stateImg"
+          alt="..."
+        />
+      </div> */}
     </div>
   );
 };
