@@ -31,11 +31,14 @@ class City(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), unique=False, nullable=False)
     code = db.Column(db.String(256), unique=False, nullable=True)
-    population = db.Column(db.Integer, unique=False, nullable=False)
+    population = db.Column(db.String(256), unique=False, nullable=False)
     temperature_range = db.Column(db.String(256), unique=False, nullable=False)
     inclement_weather = db.Column(db.String(256), unique=False, nullable=False)
     avg_cost_of_living = db.Column(db.String(256), unique=False, nullable=False)
     avg_annual_income = db.Column(db.String(256), unique=False, nullable=False)
+    walk_score = db.Column(db.String(256), unique=False, nullable=True)
+    transit_score = db.Column(db.String(256), unique=False, nullable=True)
+    bike_score = db.Column(db.String(256), unique=False, nullable=True)
 
     def serialize(self):
         return {
@@ -48,6 +51,9 @@ class City(db.Model):
         "inclement_weather": self.inclement_weather,
         "avg_cost_of_living": self.avg_cost_of_living,
         "avg_annual_income": self.avg_annual_income,
+        "walk_score": self.walk_score,
+        "transit_score": self.transit_score,
+        "bike_score": self.bike_score
         }
 
     
