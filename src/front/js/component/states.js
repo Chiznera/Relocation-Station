@@ -18,6 +18,7 @@ const States = () => {
           <div className="col my-2" key={idx}>
             <HomeTile
               img={basic.landscape_background_url}
+              // img={basic?.skyline_background_url}
               text={basic.state}
               link={basic.code}
             />

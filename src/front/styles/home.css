@@ -214,25 +214,27 @@ input[type="submit"]:hover {
 
 .centered {
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: larger;
+  font-family: monospace;
+  text-shadow: 2px 2px black;
 }
 
 .tile {
   position: relative;
   text-align: center;
   color: white;
-  filter: brightness(70%);
-  border-radius: 50%;
 }
 
-.tile:hover {
+.tileImg:hover {
   filter: brightness(100%);
 }
 
 .tileImg {
-  border-radius: 10%;
+  border-radius: 1rem;
+  filter: brightness(70%);
   width: 100%;
 }
 

@@ -30,13 +30,13 @@ const CityDetails = (props) => {
         <DetailComponent title={props.text2} />
         <DetailComponent title={props.text3} />
       </div>
-      <div className="imgSize pt-2">
+      {/* <div className="imgSize pt-2">
         <img
           src={props.img ? props.img : "https://via.placeholder.com/600/400"}
           className="stateImg"
           alt="..."
         />
-      </div>
+      </div> */}
     </div>
   );
 };

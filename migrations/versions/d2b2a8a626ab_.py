@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 5cfefe39498a
+Revision ID: d2b2a8a626ab
 Revises: 
-Create Date: 2022-08-08 17:13:54.301354
+Create Date: 2022-08-18 00:13:51.687920
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5cfefe39498a'
+revision = 'd2b2a8a626ab'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,11 +21,15 @@ def upgrade():
     op.create_table('city',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=256), nullable=False),
-    sa.Column('population', sa.Integer(), nullable=False),
+    sa.Column('code', sa.String(length=256), nullable=True),
+    sa.Column('population', sa.String(length=256), nullable=False),
     sa.Column('temperature_range', sa.String(length=256), nullable=False),
     sa.Column('inclement_weather', sa.String(length=256), nullable=False),
     sa.Column('avg_cost_of_living', sa.String(length=256), nullable=False),
     sa.Column('avg_annual_income', sa.String(length=256), nullable=False),
+    sa.Column('walk_score', sa.String(length=256), nullable=True),
+    sa.Column('transit_score', sa.String(length=256), nullable=True),
+    sa.Column('bike_score', sa.String(length=256), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('state',

@@ -25,31 +25,34 @@ const Singles = (idx) => {
     //   <hr className="my-4" />
     <>
       {/* <div style={bgStyle}> */}
-        <div className="container my-3 bg-dark">
-          <CityDetails
-            key={idx}
-            img={store.singleState?.skyline_background_url}
-            state={store.singleState?.state}
-            text1={`Population: ${store.singleState?.population}`}
-            text2={`Capital City: ${store.singleState?.capital_city}`}
-            text3={`Nickname: ${store.singleState?.nickname}`}
-          />
-          <div className="container my-4 d-flex bg-dark">
-            {store.singleState?.cities?.map((city, idx) => {
-              return (
-                <CityCard
-                  key={idx}
-                  name={city.name}
-                  text1={`Population: ${city.population}`}
-                  text2={`Average Cost of Living: ${city.avg_cost_of_living}% of National Average`}
-                  text3={`Average Income: ${city.avg_annual_income}`}
-                  text4={`Inclement Weather: ${city.inclement_weather}`}
-                  text5={`Typical Annual Temperature Range: ${city.temperature_range}`}
-                />
-              );
-            })}
-          </div>
+      <div className="container my-3 bg-dark">
+        <CityDetails
+          key={idx}
+          img={store.singleState?.skyline_background_url}
+          state={store.singleState?.state}
+          text1={`Population: ${store.singleState?.population?.toLocaleString()}`}
+          text2={`Capital City: ${store.singleState?.capital_city}`}
+          text3={`Nickname: ${store.singleState?.nickname}`}
+        />
+        <div className="container my-4 d-flex bg-dark">
+          {store.singleState?.cities?.map((city, idx) => {
+            return (
+              <CityCard
+                key={idx}
+                name={city.name}
+                text1={`Population: ${city.population?.toLocaleString()}`}
+                text2={`Average Cost of Living: ${city.avg_cost_of_living}% of National Average`}
+                text3={`Average Income: ${city.avg_annual_income}`}
+                text4={`Inclement Weather: ${city.inclement_weather}`}
+                text5={`Typical Annual Temperature Range: ${city.temperature_range}`}
+                // text6={`Walk Score: `}
+                // text7={`Transit Score: `}
+                // text8={`Bike Score: `}
+              />
+            );
+          })}
         </div>
+      </div>
       {/* </div> */}
     </>
   );
