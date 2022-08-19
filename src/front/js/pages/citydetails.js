@@ -6,14 +6,31 @@ import { DetailComponent } from "../component/detailcomponent";
 const CityDetails = (props) => {
   const { store, actions } = useContext(Context);
   const { catagory, id } = useParams();
-
+  console.log(store.favorites)
   return (
     <div className="container text-light bg-dark">
-      <div className="card-header">
-        <h1 className="card-title text-warning">
-          {props.state ? props.state : "This is filler"}
-        </h1>
-        {/* <div className="card-body">
+      <div className="imgSize pt-2">
+        <img
+          src={props.img ? props.img : "https://via.placeholder.com/600/400"}
+          className="img-thumbnail "
+          alt="..."
+        />
+      </div>
+      <div className="">
+        <div className="d-flex justify-content-center">
+          <h1 className="card-title">
+            {props.obj.state ? props.obj.state : "This is filler"}
+          </h1>
+          <button
+            className="btn"
+            onClick={() =>
+              actions.addFavorites(props.obj)
+            }
+          >
+            <i className="fas fa-bookmark text-white"></i>
+          </button>
+        </div>
+        <div className="card-body">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
           sagittis leo, nec rhoncus nulla. Etiam quis ligula sit amet libero
           aliquam bibendum. Sed ut orci aliquam, blandit ante a, egestas eros.

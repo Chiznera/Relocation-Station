@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   let BACKEND_URL = process.env.BACKEND_URL;
   return {
     store: {
+      favorites: [],
       alert: {
         type: "",
         msg: "",
@@ -30,6 +31,37 @@ const getState = ({ getStore, getActions, setStore }) => {
       stateCities: {},
     },
     actions: {
+      addFavorites: (data) => {
+        let token = sessionStorage.getItem("token")
+        console.log(token)
+        fetch(`${process.env.BACKEND_URL}/api/favorites`, {
+          method: "POST",
+
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(data),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            setStore({
+              favorites: data,
+            });
+          });        // const store = getStore();
+        // store.favorites.push(data);
+        // setStore(store);
+      },
+
+      deleteFavorites: (index) => {
+        const store = getStore();
+        const newArray = store.favorites.filter((item, i) => i != index);
+        setStore({
+          favorites: newArray,
+        });
+      },
+
+
       setAlert: (payload) => {
         /* payload should be an object with the following shape:
                     {
@@ -54,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       signup: (data) => {
         const store = getStore();
 
-        return fetch(`${BACKEND_URL}/api/signup`, {
+        fetch(`${process.env.BACKEND_URL}/api/signup`, {
           method: "POST",
 
           headers: { "Content-type": "application/json" },

@@ -17,7 +17,7 @@ import {
 import { CustomList } from "../component/CustomList";
 import "../../styles/bookmarks.scss";
 
-export const Bookmarks = (props) => {
+export const Favorites = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
 
@@ -31,7 +31,7 @@ export const Bookmarks = (props) => {
     <div className="m-5">
       <Navbar expand="lg" variant="dark" bg="dark">
         <Navbar.Brand href="#" className="mr-auto">
-          Bookmarks
+          Favorites
         </Navbar.Brand>
       </Navbar>
       <ListGroup variant="flush">
@@ -67,7 +67,7 @@ export const Bookmarks = (props) => {
   );
 };
 
-Bookmarks.propTypes = {
+Favorites.propTypes = {
   match: PropTypes.object,
   loggedIn: PropTypes.bool,
   setLoggedIn: PropTypes.func,
