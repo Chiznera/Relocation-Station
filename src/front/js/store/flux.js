@@ -32,14 +32,14 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       addFavorites: (data) => {
-        let token = sessionStorage.getItem("token")
-        console.log(token)
+        let token = sessionStorage.getItem("token");
+        console.log(token);
         fetch(`${process.env.BACKEND_URL}/api/favorites`, {
           method: "POST",
 
           headers: {
             "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(data),
         })
@@ -48,9 +48,28 @@ const getState = ({ getStore, getActions, setStore }) => {
             setStore({
               favorites: data,
             });
-          });        // const store = getStore();
+          }); // const store = getStore();
         // store.favorites.push(data);
         // setStore(store);
+      },
+
+      getFavorites: () => {
+        const token = sessionStorage.getItem("token");
+        const opts = {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        };
+        fetch(`${process.env.BACKEND_URL}/api/favorites`, opts)
+          .then((rep) => rep.json())
+          .then((data) => {
+            console.log(data);
+            setStore({
+              favorites: data,
+            });
+          });
       },
 
       deleteFavorites: (index) => {
@@ -60,7 +79,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           favorites: newArray,
         });
       },
-
 
       setAlert: (payload) => {
         /* payload should be an object with the following shape:

@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./logo.png";
-
-
 export const Navbar = () => {
+  let token = sessionStorage.getItem("token");
   return (
     <nav>
       <Link to={"/"}>
@@ -11,12 +10,21 @@ export const Navbar = () => {
       </Link>
       <div className="menu">
         <div className="button-div">
-          <Link to={"/signup"}>
-            <button className="button-74">Signup</button>
-          </Link>
-          <Link to={"/login"}>
-            <button className="button-84">Log In</button>
-          </Link>
+          {!token && (
+            <Link to={"/signup"}>
+              <button className="button-74">Signup</button>
+            </Link>
+          )}
+          {!token && (
+            <Link to={"/login"}>
+              <button className="button-84">Log In</button>
+            </Link>
+          )}
+          {token && (
+            <Link to={"/favorites"}>
+              <button className="button-84">Favorites</button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>
