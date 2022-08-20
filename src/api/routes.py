@@ -140,3 +140,12 @@ def addFavorites():
     favorites=Bookmark.query.filter_by(user_id=user.id)
     favorite_list=[favorite.serialize()for favorite in favorites]
     return jsonify(favorite_list)
+
+
+@api.route("/favorites", methods=["GET"])
+@jwt_required()
+def getFavorites():
+    user = User.query.filter_by(id=get_jwt_identity()).first()
+    favorites=Bookmark.query.filter_by(user_id=user.id)
+    favorite_list=[favorite.serialize()for favorite in favorites]
+    return jsonify(favorite_list)

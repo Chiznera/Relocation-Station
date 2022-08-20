@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams, Redirect } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import {
   ListGroup,
@@ -14,18 +14,27 @@ import {
   Col,
   Pagination,
 } from "react-bootstrap";
-import { CustomList } from "../component/CustomList";
-import "../../styles/bookmarks.scss";
 
 export const Favorites = (props) => {
   const { store, actions } = useContext(Context);
   const params = useParams();
-
+  const nav = useNavigate();
   // Add userID
 
-  // useEffect(() => {
-  // 	actions.getBookmarkData();
-  // }, []);
+  useEffect(() => {
+    if (store.token) {
+      actions.getFavorites();
+      actions.getMoreStates();
+    } else {
+      nav("/login");
+    }
+  }, []);
+
+  Favorites.propTypes = {
+    match: PropTypes.object,
+    loggedIn: PropTypes.bool,
+    setLoggedIn: PropTypes.func,
+  };
 
   return (
     <div className="m-5">
@@ -34,41 +43,19 @@ export const Favorites = (props) => {
           Favorites
         </Navbar.Brand>
       </Navbar>
-      <ListGroup variant="flush">
-        {console.log(store.bookmarkData)}
-        {store.bookmarkData.length > 0 &&
-          store.bookmarkData.map((city, index) => {
-            return (
-              <ListGroup.Item key={index} className="bg-color">
-                <Link to={"/city/" + city.name}>
-                  <Row className="cityList-row">
-                    <Col className="pictureCol">
-                      {/* <Form.Check
-												inline
-												name="group1"
-												type={city.type}
-												id={`inline-${city.type}-1`}
-											/> */}
-                      <img src={city.imageUrl} />
-                    </Col>
-
-                    <Col>
-                      <h6>Name:</h6>
-                      <p>{city.displayName}</p>
-                    </Col>
-                  </Row>
-                </Link>
-              </ListGroup.Item>
-            );
-          })}
-      </ListGroup>
-      {props.loggedIn ? "" : <Redirect to="/login" />}
+      {/* <ListGroup variant="flush"> */}
+      {store.favorites.map((item, index) => {
+        const state = store.basic.find(
+          (elem) => elem.state === item.state_name
+        );
+        console.log(item, state);
+        return (
+          <Link to={`/state/${state.code}`}>
+            <p key={index}>{item.state_name}</p>
+          </Link>
+        );
+      })}
+      {/* </ListGroup> */}
     </div>
   );
-};
-
-Favorites.propTypes = {
-  match: PropTypes.object,
-  loggedIn: PropTypes.bool,
-  setLoggedIn: PropTypes.func,
 };
