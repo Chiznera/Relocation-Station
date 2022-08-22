@@ -51,13 +51,15 @@ const SearchBar = ({ placeholder, basic }) => {
         <div className="dataResult mx-auto">
           {filteredData.map((basic, idx) => {
             return (
-              <a
-                className="dataItem"
-                href={`/state/${basic.code}`}
-                target="_blank"
-              >
-                <p> {basic.state} </p>
-              </a>
+              <Link to={`/state/${basic.code}`}>
+                {/* <a
+                  className="dataItem"
+                  href={`/state/${basic.code}`}
+                  target="_blank"
+                > */}
+                <p className="dataItem my-3"> {basic.state} </p>
+                {/* </a> */}
+              </Link>
             );
           })}
         </div>

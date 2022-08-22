@@ -195,21 +195,24 @@ input[type="submit"]:hover {
 }
 .dataResult {
   width: 330px;
-  height: 200px;
+  height: auto;
   background-color: #fff;
   box-shadow: black;
   overflow: hidden;
   overflow-y: auto;
+  position: relative;
+  z-index: 1;
 }
 .dataResult::-webkit-scrollbar {
   display: none;
 }
 .dataResult .dataItem {
   width: 200px;
-  height: 50px;
+  height: auto;
   display: flex;
   align-items: center;
   color: black;
+  margin: auto;
 }
 
 .centered {
@@ -238,9 +241,9 @@ input[type="submit"]:hover {
   width: 100%;
 }
 
-.dataItem p {
+/* .dataItem p {
   margin-left: 10px;
-}
+} */
 .fas fa-times {
   cursor: pointer;
 }
