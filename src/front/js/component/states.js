@@ -10,7 +10,7 @@ const States = () => {
     actions.getMoreStates();
     console.log(store);
   }, []);
-
+  console.log(store.basic)
   return (
     <div className="row row-cols-5 text-light mx-5 my-1">
       {store.basic.map((basic, idx) => {

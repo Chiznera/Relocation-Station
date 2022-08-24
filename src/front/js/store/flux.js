@@ -135,6 +135,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(`${process.env.BACKEND_URL}/api/states`)
           .then((resp) => resp.json())
           .then((data) => {
+            console.log("###", data)
             setStore({ basic: data.civilserviceusa });
             setStore({ city: data.cities });
           });
