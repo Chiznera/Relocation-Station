@@ -16,7 +16,7 @@ const CityCard = ({
 }) => {
   return (
     <div className="col flex-fill">
-      <div className="card text-dark bg-light mx-3">
+      <div className="card text-dark bg-light mx-3 my-3">
         <div className="card-title">
           <strong>{name ? name : "Filter titles"}</strong>
         </div>

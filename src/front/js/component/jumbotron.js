@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import { SearchBar } from "./SearchBar";
 import travel from "./travel.png";
 
-
 const Jumbotron = () => {
   const { store, actions } = useContext(Context);
   useEffect(() => {
@@ -17,6 +16,7 @@ const Jumbotron = () => {
       style={{
         backgroundImage:
           "url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp')",
+        backgroundSize: "cover",
         height: "250px",
         width: "100%",
       }}
